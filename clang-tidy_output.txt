@@ -1,0 +1,2 @@
+(base) sound@soundpc:~/Sounderya/ros_ws$ clang-tidy -p compile_commands.json --extra-arg=-std=c++17 src/beginner_tutorials/src/publisher_member_function.cpp src/beginner_tutorials/src/subscriber_member_function.cpp 
+(base) sound@soundpc:~/Sounderya/ros_ws$ 
