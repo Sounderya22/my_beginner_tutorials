@@ -5,7 +5,7 @@
   <version>0.0.0</version>
   <description>beginner_tutorials package for ROS 2 Programming Assignment 1 - Publisher/Subscriber</description>
   <maintainer email="vvs22@umd.edu">Sounderya Varagur Venugopal</maintainer>
-  <license>Apache-2.0</license>
+  <license>MIT</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
   <depend>rclcpp</depend>
