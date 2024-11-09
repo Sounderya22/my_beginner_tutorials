@@ -13,19 +13,27 @@ colcon_build
 source . install/setup.bash
 ```
 
-### Running the publisher and subscriber node
+### Running the publisher and subscriber node 
 
 ```bash
 cd ros2_ws/
 source . install/setup.bash
-ros2 run beginner_tutorials talker
+ros2 run beginner_tutorials server
 ```
 In another terminal
 
 ```bash
 cd ros2_ws/
 source . install/setup.bash
-ros2 run beginner_tutorials listener
+ros2 run beginner_tutorials client
+```
+
+### Running through the launch file
+
+```bash
+cd ros2_ws/
+source . install/setup.bash
+ros2 launch beginner_tutorials service.launch.py 
 ```
 
 ### Dependencies
