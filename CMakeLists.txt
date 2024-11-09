@@ -5,20 +5,31 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
-# find dependencies
+# Find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(std_srvs REQUIRED)
+find_package(example_interfaces REQUIRED)
 
-add_executable(talker src/publisher_member_function.cpp)
-ament_target_dependencies(talker rclcpp std_msgs)
+# Define executables
+add_executable(server src/service_server_node.cpp)
+ament_target_dependencies(server rclcpp std_msgs std_srvs example_interfaces)
 
-add_executable(listener src/subscriber_member_function.cpp)
-ament_target_dependencies(listener rclcpp std_msgs)
+add_executable(client src/service_client_node.cpp)
+ament_target_dependencies(client rclcpp std_msgs std_srvs example_interfaces)
 
+# Install executables
 install(TARGETS
-  talker
-  listener
-  DESTINATION lib/${PROJECT_NAME})
+  server
+  client
+  DESTINATION lib/${PROJECT_NAME}
+)
 
+# Install launch directory
+install(DIRECTORY launch
+  DESTINATION share/${PROJECT_NAME}
+)
+
+# This must be the last statement in CMakeLists.txt
 ament_package()
