@@ -1,4 +1,4 @@
-## ROS 2 Programming Assignment 1 - Publisher/Subscriber
+## ROS 2 Programming Assignment 2 - Services, Logging and Launch file
 
 This is the ROS package beginner_tutorials made for the ROS 2 Programming Assignment 1. 
 
