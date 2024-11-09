@@ -31,7 +31,7 @@ ros2 run beginner_tutorials client
 ```bash
 cd ros2_ws/
 source . install/setup.bash
-ros2 launch beginner_tutorials service.launch.py 
+ros2 launch beginner_tutorials service.launch.py publish_frequency:=2.0
 ```
 
 ### Dependencies
