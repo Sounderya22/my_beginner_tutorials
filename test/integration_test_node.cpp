@@ -120,7 +120,6 @@ TEST_CASE_METHOD(MyTestsFixture, "test talker", "[topic]") {
    */
   struct ListenerCallback {
     explicit ListenerCallback(bool &got_topic) : got_topic_(got_topic) {}
-    
     void operator()(const String msg) const {
       RCLCPP_INFO_STREAM(logger, "I heard: " << msg.data.c_str());
       got_topic_ = true;  // Set the flag to true once a message is received

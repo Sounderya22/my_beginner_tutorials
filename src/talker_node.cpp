@@ -26,9 +26,6 @@
  * SOFTWARE.
  */
 
-#include <memory>
-#include <string>
-#include <ctime>
 
 #include "rclcpp/rclcpp.hpp"
 #include "example_interfaces/srv/trigger.hpp"

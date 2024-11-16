@@ -1,4 +1,0 @@
-sound@d876dc651d33:~/ENPM700/my_beginner_tutorials/build$ clang-tidy -p compile_commands.json --extra-arg=-std=c++17 ../src/service_client_node.cpp ../src/service_server_node.cpp 
-sound@d876dc651d33:~/ENPM700/my_beginner_tutorials/build$ 
-
-
