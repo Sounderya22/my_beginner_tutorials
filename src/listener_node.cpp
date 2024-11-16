@@ -1,10 +1,10 @@
 /**
- * @file service_client_node.cpp
- * @brief A ROS 2 client node that calls a Trigger service at regular intervals.
+ * @file listener_node.cpp
+ * @brief A ROS 2 client node that calls a Trigger service at regular intervals and listens to messages on the /chatter topic.
  * 
  * MIT License
  * 
- * Copyright (c) [year] [your name or organization]
+ * Copyright (c) 2024 Sounderya Varagur Venugopal
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,40 +25,52 @@
  * SOFTWARE.
  */
 
-
 #include "rclcpp/rclcpp.hpp"
 #include "example_interfaces/srv/trigger.hpp"
-#include <chrono>
-#include <memory>
+#include "std_msgs/msg/string.hpp"
+
 
 using namespace std::chrono_literals;
 
 /**
  * @class TriggerServiceClient
- * @brief A ROS 2 node that periodically calls a Trigger service.
- * 
- * The TriggerServiceClient class creates a client node that attempts to call
- * a service named "trigger_service" every second. If the service is not 
- * available after 1 minute of attempts, the node logs a fatal message and shuts down.
+ * @brief A ROS 2 node that periodically calls a Trigger service and listens to the /chatter topic.
  */
 class TriggerServiceClient : public rclcpp::Node {
  public:
     /**
      * @brief Constructor for the TriggerServiceClient node.
      * 
-     * Initializes the ROS client for the Trigger service and sets up a timer to
-     * periodically call the service.
+     * Initializes the ROS client for the Trigger service, sets up a timer to
+     * periodically call the service, and subscribes to the /chatter topic.
      */
-    TriggerServiceClient() : Node("service_client"), wait_duration_(0s) {
+    TriggerServiceClient() : Node("listener"), wait_duration_(0s) {
         // Create a client for the "trigger_service" service
         client_ = this->create_client<example_interfaces::srv::Trigger>("trigger_service");
 
-        // Set up a timer to call the service every second.
+        // Set up a timer to call the service every second
         timer_ = this->create_wall_timer(
             1000ms, std::bind(&TriggerServiceClient::callService, this));
+
+        // Create a subscriber for the /chatter topic
+        subscriber_ = this->create_subscription<std_msgs::msg::String>(
+            "/chatter", 10, std::bind(&TriggerServiceClient::chatterCallback, this, std::placeholders::_1));
+
+        RCLCPP_INFO(this->get_logger(), "TriggerServiceClient node initialized.");
     }
 
  private:
+    /**
+     * @brief Callback function for the /chatter topic.
+     * 
+     * Logs the received message to the console.
+     * 
+     * @param msg The message received from the /chatter topic.
+     */
+    void chatterCallback(const std_msgs::msg::String::SharedPtr msg) {
+        RCLCPP_INFO(this->get_logger(), "Heard message on /chatter: '%s'", msg->data.c_str());
+    }
+
     /**
      * @brief Calls the Trigger service.
      * 
@@ -106,8 +118,9 @@ class TriggerServiceClient : public rclcpp::Node {
     }
 
     rclcpp::Client<example_interfaces::srv::Trigger>::SharedPtr client_;  // Client for Trigger service
-    rclcpp::TimerBase::SharedPtr timer_;
-    std::chrono::seconds wait_duration_;
+    rclcpp::Subscription<std_msgs::msg::String>::SharedPtr subscriber_;  // Subscriber for /chatter topic
+    rclcpp::TimerBase::SharedPtr timer_;                                 // Timer for periodic service calls
+    std::chrono::seconds wait_duration_;                                 // Duration of waiting for service
 };
 
 /**
