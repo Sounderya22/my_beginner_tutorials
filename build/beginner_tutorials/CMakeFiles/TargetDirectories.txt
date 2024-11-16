@@ -1,0 +1,12 @@
+/home/vv/my_beginner_tutorials/build/beginner_tutorials/CMakeFiles/uninstall.dir
+/home/vv/my_beginner_tutorials/build/beginner_tutorials/CMakeFiles/beginner_tutorials_uninstall.dir
+/home/vv/my_beginner_tutorials/build/beginner_tutorials/CMakeFiles/talker.dir
+/home/vv/my_beginner_tutorials/build/beginner_tutorials/CMakeFiles/client.dir
+/home/vv/my_beginner_tutorials/build/beginner_tutorials/CMakeFiles/test_talker_tf.dir
+/home/vv/my_beginner_tutorials/build/beginner_tutorials/CMakeFiles/test.dir
+/home/vv/my_beginner_tutorials/build/beginner_tutorials/CMakeFiles/edit_cache.dir
+/home/vv/my_beginner_tutorials/build/beginner_tutorials/CMakeFiles/rebuild_cache.dir
+/home/vv/my_beginner_tutorials/build/beginner_tutorials/CMakeFiles/list_install_components.dir
+/home/vv/my_beginner_tutorials/build/beginner_tutorials/CMakeFiles/install.dir
+/home/vv/my_beginner_tutorials/build/beginner_tutorials/CMakeFiles/install/local.dir
+/home/vv/my_beginner_tutorials/build/beginner_tutorials/CMakeFiles/install/strip.dir

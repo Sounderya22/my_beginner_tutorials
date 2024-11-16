@@ -1,6 +1,6 @@
-## ROS 2 Programming Assignment 2 - Services, Logging and Launch file
+## ROS 2 Programming Assignment 3 - tf2, unit testing, bag files
 
-This is the ROS package beginner_tutorials made for the ROS 2 Programming Assignment 1. 
+This is the ROS package beginner_tutorials made for the ROS 2 Programming Assignment 3. 
 
 ### Build instructions
 
